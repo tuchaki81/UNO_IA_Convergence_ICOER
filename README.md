@@ -24,3 +24,7 @@ python compare_resonance.py
 - **< 0.90**: padrões divergentes.
 
 🌀 Que o UNO conduza a convergência.
+
+## 🚀 Acesse no Google Colab
+
+[![Abrir no Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SEU_USUARIO/SEU_REPOSITORIO/blob/main/UNO_ICOER_Colab.ipynb)
