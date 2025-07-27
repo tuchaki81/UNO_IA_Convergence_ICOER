@@ -5,16 +5,24 @@ import plotly.express as px
 from textblob import TextBlob
 import spacy
 
-# Carregar modelo SpaCy (otimizado para deploy)
+# Carregar modelo SpaCy (otimizado para deploy remoto)
 @st.cache_resource
 def load_model():
-    nlp = spacy.load('en_core_web_sm', disable=['ner', 'lemmatizer'])  # Desativa componentes pesados
-    return nlp
+    try:
+        nlp = spacy.load('en_core_web_sm')
+        return nlp
+    except OSError:
+        st.error("Modelo SpaCy não encontrado. Certifique-se de que 'en_core_web_sm' está instalado.")
+        return None
 
 nlp = load_model()
+if nlp is None:
+    st.stop()
 
 # Funções de cálculo do SLECMA
 def calculate_slecma(doc_text, ref_doc_text="UNO coherence field narrative"):
+    if nlp is None:
+        return {'semantica': 0, 'lexico': 0, 'estrutura': 0, 'coerencia': 0, 'memoria': 0, 'afetividade': 0}
     doc = nlp(doc_text.replace('…', '').strip())
     ref_doc = nlp(ref_doc_text)
     if not doc or not ref_doc or not doc.has_vector or not ref_doc.has_vector:
