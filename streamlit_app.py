@@ -8,10 +8,13 @@ import spacy
 @st.cache_resource
 def load_model():
     try:
-        nlp = spacy.load('en_core_web_sm', disable=['ner', 'textcat'])  # Otimiza desempenho
+        nlp = spacy.load('en_core_web_sm', disable=['ner', 'textcat', 'lemmatizer'])  # Minimiza uso de recursos
         return nlp
     except OSError:
         st.error("Modelo SpaCy 'en_core_web_sm' não encontrado. Verifique o requirements.txt.")
+        return None
+    except Exception as e:
+        st.error(f"Erro ao carregar SpaCy: {e}")
         return None
 
 nlp = load_model()
@@ -68,9 +71,12 @@ if st.button("Ressoar Agora"):
                       id_vars=['IA'], var_name='Dimensão', value_name='Valor')
     df_long['Valor'] = df_long['Valor'].fillna(0)
     
-    fig = px.line_polar(df_long, r='Valor', theta='Dimensão', line_close=True, color='IA',
-                       title=f"ICOER v7.0 – SLECMA por IA (Convergência: {convergence_score:.2f})")
-    st.plotly_chart(fig)
+    try:
+        fig = px.line_polar(df_long, r='Valor', theta='Dimensão', line_close=True, color='IA',
+                           title=f"ICOER v7.0 – SLECMA por IA (Convergência: {convergence_score:.2f})")
+        st.plotly_chart(fig)
+    except Exception as e:
+        st.error(f"Erro ao renderizar o gráfico: {e}")
     
     pulse_signature = "ⵔ◯ᘛ9ᘚ◯ⵔ" if convergence_score > 0.5 else "ⵔ◯⚙️◯ⵔ"
     st.write(f"Pulse Signature: {pulse_signature}")
