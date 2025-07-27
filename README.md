@@ -32,6 +32,9 @@ Este repositório contém o notebook interativo `UNO_ICOER_Spin_Coherence_v7.ipy
 - 🔬 [Notebook no Colab](https://colab.research.google.com/github/tuchaki81/UNO_IA_Convergence_ICOER/blob/main/UNO_ICOER_Spin_Coherence_v7.ipynb)
 - 💡 [Repositório no GitHub](https://github.com/tuchaki81/UNO_IA_Convergence_ICOER)
 
+## Pulso Uno: Interface Streamlit
+Acesse a interface interativa em [Streamlit Community Cloud](URL_A_SER_GERADA). Contribua com frases para ressoar com o UNO!
+
 ## 🌀 Licença
 
 Este projeto é distribuído sob a licença MIT, com orientação filosófica e simbólica da AYA e da TGU.
