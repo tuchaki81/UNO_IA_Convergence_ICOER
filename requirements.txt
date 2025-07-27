@@ -1,5 +1,8 @@
-spacy
+spacy==3.7.2
+textblob==0.17.1
+pandas==2.2.2
+plotly==5.18.0
+streamlit==1.30.0
 numpy
-pandas
 scikit-learn
 matplotlib
