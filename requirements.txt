@@ -3,6 +3,4 @@ textblob==0.17.1
 pandas==2.2.2
 plotly==5.18.0
 streamlit==1.30.0
-numpy
-scikit-learn
-matplotlib
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.0/en_core_web_sm-3.7.0.tar.gz#egg=en_core_web_sm
